@@ -21,7 +21,7 @@ const FileRouter=require("./router/FileRouter");
 // require('./config/passport'); // Initialize Passport strategies
 
 
-app.use(cors({ origin: 'http://localhost:3000' })); // Replace with your frontend URL
+app.use(cors());
 app.use(bodyParser.json());
 const port=process.env.PORT || 8000;
 // Middleware
