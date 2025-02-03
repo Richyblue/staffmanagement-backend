@@ -71,3 +71,14 @@ exports.DeleteIn=async(req,res)=>{
         res.status(500).json({message: "Faild to delete Inventory", error: error.message});
     }
 }
+
+exports.getExpensisById=async(req, res)=>{
+    try {
+        const {id}=req.params;
+        const getallbyid=await Expensis.findAll({where:{id}  
+        });
+        res.status(200).json(getallbyid);
+    } catch (error) {
+        res.status(500).json({message: "Faild to Get expensis data by ID", error: error.message});
+    }
+}
