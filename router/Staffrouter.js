@@ -19,7 +19,7 @@ router.put('/staff/medical/:id',authMiddleware, Staff.updateStaffExtended);
 router.put('/staff/terminate/:id',authMiddleware, Staff.updateStaffStatus);
 router.put('/staff/status/:id',authMiddleware, Staff.updateStaffStatusTwo);
 router.post('/checkMail' , Staff.checkEmail);
-router.post('/staff/gurantor/:id',authMiddleware, Staff.createGurantors);
+router.post('/staff/gurantor/:staffId',authMiddleware, Staff.createGurantors);
 
 
 module.exports=router;
