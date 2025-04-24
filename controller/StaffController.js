@@ -455,7 +455,7 @@ exports.checkEmail = async (req, res) => {
     }
   };
 
-exports.createGurantors=async(req,res)=>{
+exports.createGurantors = async (req, res) => {
     try {
         const {
             surname,
@@ -470,12 +470,21 @@ exports.createGurantors=async(req,res)=>{
             nearest_bus_stop,
             closest_landmark,
             business_name
-            
-            
-        }=req.body;
+        } = req.body;
 
-        const {staffId}=req.params;
-        const allGuarantor=await Gurantor.create({
+        const { staffId } = req.params;
+
+        // Check existing guarantors for the staff
+        const existingGuarantors = await Gurantor.count({ where: { staffId } });
+
+        if (existingGuarantors >= 3) {
+            return res.status(400).json({
+                message: "You have already added the maximum of 3 guarantors for this staff."
+            });
+        }
+
+        // Create the new guarantor
+        const allGuarantor = await Gurantor.create({
             surname,
             other_name,
             email,
@@ -489,12 +498,20 @@ exports.createGurantors=async(req,res)=>{
             closest_landmark,
             business_name,
             staffId: staffId
-            
-            
         });
-        res.status(200).json({message: "Staff Gurantor created successfully", allGuarantor});
+
+        const remaining = 2 - existingGuarantors;
+
+        res.status(200).json({
+            message: `Guarantor added successfully. ${remaining} more remaining.`,
+            allGuarantor
+        });
+
     } catch (error) {
-        res.status(500).json({message: "Faild to created staff Gurantor database"});
+        console.error("Error creating guarantor:", error);
+        res.status(500).json({
+            message: "Failed to create staff guarantor."
+        });
     }
 };
 
