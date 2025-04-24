@@ -20,6 +20,7 @@ router.put('/staff/terminate/:id',authMiddleware, Staff.updateStaffStatus);
 router.put('/staff/status/:id',authMiddleware, Staff.updateStaffStatusTwo);
 router.post('/checkMail' , Staff.checkEmail);
 router.post('/staff/gurantor/:staffId',authMiddleware, Staff.createGurantors);
+router.get("/staff/:staffId", authMiddleware, Staff.getGuarantorsByStaffId);
 
 
 module.exports=router;
