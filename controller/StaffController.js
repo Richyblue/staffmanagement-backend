@@ -454,6 +454,50 @@ exports.checkEmail = async (req, res) => {
     }
   };
 
+exports.createGurantors=async(req,res)=>{
+    try {
+        const {
+            surname,
+            other_name,
+            email,
+            phone,
+            gender,
+            religion,
+            marital_status,
+            year_of_relationship,
+            address,
+            nearest_bus_stop,
+            closest_landmark,
+            business_name
+            
+            
+        }=req.body;
+
+        const {staffId}=req.params;
+        const allGuarantor=await Gurantor.create({
+            surname,
+            other_name,
+            email,
+            phone,
+            gender,
+            religion,
+            marital_status,
+            year_of_relationship,
+            address,
+            nearest_bus_stop,
+            closest_landmark,
+            business_name,
+            staffId: staffId
+            
+            
+        });
+        res.status(200).json({message: "Staff Gurantor created successfully", allGuarantor});
+    } catch (error) {
+        res.status(500).json({message: "Faild to created staff Gurantor database"});
+    }
+};
+
+
 
 
 
