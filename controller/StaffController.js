@@ -498,6 +498,25 @@ exports.createGurantors=async(req,res)=>{
     }
 };
 
+// GET /api/v1/staff/gurantor/staff/:staffId
+exports.getGuarantorsByStaffId = async (req, res) => {
+    try {
+        const { staffId } = req.params;
+
+        // Fetch all guarantors for this staff ID
+        const guarantors = await Gurantor.findAll({
+            where: { staffId },
+        });
+
+        return res.status(200).json(guarantors);
+    } catch (error) {
+        console.error("Error fetching guarantors by staffId:", error);
+        return res.status(500).json({
+            message: "An error occurred while fetching guarantors.",
+        });
+    }
+};
+
 
 
 
