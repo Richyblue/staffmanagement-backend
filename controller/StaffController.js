@@ -1,5 +1,6 @@
 // const Staff=require("../models/Staff");
 const BankDetails=require("../models/BankDetails");
+const Gurantor =require("../models/Guarantor");
 // const Leave=require("../models/Leave");
 
 const { Staff, Leave, Attendance } = require("../models");
