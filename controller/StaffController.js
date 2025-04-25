@@ -320,26 +320,26 @@ exports.updateStaffOthersqr=async(req,res)=>{
 
         const {id}=req.params;
 
-        const allotherStaff=await Staff.findByPk(id);
-        if(!allotherStaff){
+        const allotherStaffs=await Staff.findByPk(id);
+        if(!allotherStaffs){
             return res.status(404).json({
                 success: false,
                 message: "Staff not found"
             })
         }
-        await allotherStaff.update({
-            parent_name: parent_name || allotherStaff.parent_name,
-            parent_address: parent_address || allotherStaff.parent_address,
-            parent_number: parent_number || allotherStaff.parent_number,
-            parent_email: parent_email || allotherStaff.parent_email,
-            extended_name: extended_name || allotherStaff.extended_name,
-            extended_address: extended_address || allotherStaff.extended_address,
-            extended_number: extended_number || allotherStaff.extended_number,
-            extended_email: extended_email || allotherStaff.extended_email,
+        await allotherStaffs.update({
+            parent_name: parent_name || allotherStaffs.parent_name,
+            parent_address: parent_address || allotherStaffs.parent_address,
+            parent_number: parent_number || allotherStaffs.parent_number,
+            parent_email: parent_email || allotherStaffs.parent_email,
+            extended_name: extended_name || allotherStaffs.extended_name,
+            extended_address: extended_address || allotherStaffs.extended_address,
+            extended_number: extended_number || allotherStaffs.extended_number,
+            extended_email: extended_email || allotherStaffs.extended_email,
             friend_name: friend_name || allotherStaff.friend_name,
-            friend_address: friend_address || allotherStaff.friend_address,
-            friend_number: friend_number || allotherStaff.friend_number,
-            friend_email: friend_email || allotherStaff.friend_email,
+            friend_address: friend_address || allotherStaffs.friend_address,
+            friend_number: friend_number || allotherStaffs.friend_number,
+            friend_email: friend_email || allotherStaffs.friend_email,
         });
         res.status(200).json({message: "Staff Updated successfully", allotherStaff});
     } catch (error) {
