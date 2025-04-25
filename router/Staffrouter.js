@@ -12,6 +12,7 @@ router.get('/staff/:id',authMiddleware, Staff.getStaffById);
 router.get('/staff/st',authMiddleware, Staff.getStaffSuspended);
 router.get('/staff/get/:staffId', authMiddleware, Staff.getStaffDetails);
 router.put('/staff/others/:id',authMiddleware, Staff.updateStaffOthers);
+router.put('/staff/othersqr/:id',Staff.updateStaffOthersqr);
 router.put('/staff/medical/:id',authMiddleware, Staff.updateStaffMedical);
 router.put('/staff/friend/:id',authMiddleware, Staff.updateStaffFriends);
 router.put('/staff/parent/:id',authMiddleware, Staff.updateStaffParent);
