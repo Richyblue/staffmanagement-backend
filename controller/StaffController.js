@@ -343,6 +343,7 @@ exports.updateStaffOthersqr=async(req,res)=>{
         });
         res.status(200).json({message: "Staff Updated successfully", allotherStaff});
     } catch (error) {
+        console.error("Update error:", error); // Add this for debugging
         res.status(500).json({message: "Faild to update staff database"});
     }
 };
