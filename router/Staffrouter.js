@@ -5,6 +5,7 @@ const authMiddleware=require("../middleware/authMiddleware");
 
 
 router.post('/staff',authMiddleware, Staff.createStaff);
+router.post('/staffqr',Staff.createStaffQrcord);
 router.get('/staff',authMiddleware, Staff.getStaff);
 router.put('/staff/:id',authMiddleware, Staff.updateStaff);
 router.delete('/staff/:id',authMiddleware, Staff.deleteStaff);
