@@ -57,6 +57,60 @@ exports.createStaff=async(req,res)=>{
     }
 };
 
+
+exports.createStaffQr=async(req,res)=>{
+    try {
+        const {
+            first_name,
+            last_name,
+            email,
+            phone,
+            country,
+            state,
+            city,
+            address,
+            gender,
+            marital_status,
+            bvn,
+            language,
+            role,
+            bank_name,
+            beneficiary,
+            acc_number,
+            nin_number,
+            dob
+            
+        }=req.body;
+
+        const allStaff=await Staff.create({
+            first_name,
+            last_name,
+            email,
+            phone,
+            country,
+            state,
+            city,
+            address,
+            gender,
+            marital_status,
+            bvn,
+            language,
+            role,
+            bank_name,
+            beneficiary,
+            acc_number,
+            nin_number,
+            dob
+            
+            
+        });
+        res.status(200).json({message: "Staff created successfully", allStaff});
+    } catch (error) {
+        res.status(500).json({message: "Faild to created staff database"});
+    }
+};
+
+
 exports.getStaff=async(req, res)=>{
     try {
         const getall=await Staff.findAll({});
