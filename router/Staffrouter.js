@@ -3,7 +3,7 @@ const router=express.Router();
 const Staff=require("../controller/StaffController");
 const authMiddleware=require("../middleware/authMiddleware");
 
-router.post('/staffqr',Staff.createStaffQrcord);
+router.post('/staffqr',Staff.createStaffQr);
 router.post('/staff',authMiddleware, Staff.createStaff);
 router.get('/staff',authMiddleware, Staff.getStaff);
 router.put('/staff/:id',authMiddleware, Staff.updateStaff);
