@@ -336,7 +336,7 @@ exports.updateStaffOthersqr=async(req,res)=>{
             extended_address: extended_address || allotherStaffs.extended_address,
             extended_number: extended_number || allotherStaffs.extended_number,
             extended_email: extended_email || allotherStaffs.extended_email,
-            friend_name: friend_name || allotherStaff.friend_name,
+            friend_name: friend_name || allotherStaffs.friend_name,
             friend_address: friend_address || allotherStaffs.friend_address,
             friend_number: friend_number || allotherStaffs.friend_number,
             friend_email: friend_email || allotherStaffs.friend_email,
