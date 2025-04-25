@@ -341,7 +341,7 @@ exports.updateStaffOthersqr=async(req,res)=>{
             friend_number: friend_number || allotherStaffs.friend_number,
             friend_email: friend_email || allotherStaffs.friend_email,
         });
-        res.status(200).json({message: "Staff Updated successfully", allotherStaff});
+        res.status(200).json({message: "Staff Updated successfully", allotherStaffs});
     } catch (error) {
         console.error("Update error:", error); // Add this for debugging
         res.status(500).json({message: "Failed to update staff database", error: error.message});
