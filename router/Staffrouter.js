@@ -3,9 +3,8 @@ const router=express.Router();
 const Staff=require("../controller/StaffController");
 const authMiddleware=require("../middleware/authMiddleware");
 
-
-router.post('/staff',authMiddleware, Staff.createStaff);
 router.post('/staffqr',Staff.createStaffQrcord);
+router.post('/staff',authMiddleware, Staff.createStaff);
 router.get('/staff',authMiddleware, Staff.getStaff);
 router.put('/staff/:id',authMiddleware, Staff.updateStaff);
 router.delete('/staff/:id',authMiddleware, Staff.deleteStaff);
@@ -22,6 +21,7 @@ router.put('/staff/status/:id',authMiddleware, Staff.updateStaffStatusTwo);
 router.post('/checkMail' , Staff.checkEmail);
 router.post('/staff/gurantor/:staffId',authMiddleware, Staff.createGurantors);
 router.get("/staff/:staffId", authMiddleware, Staff.getGuarantorsByStaffId);
+
 
 
 module.exports=router;
