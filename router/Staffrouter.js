@@ -24,6 +24,7 @@ router.post('/staff/gurantor/:staffId',authMiddleware, Staff.createGurantors);
 router.get("/staff/:staffId", authMiddleware, Staff.getGuarantorsByStaffId);
 router.get("/staffcount", authMiddleware, Staff.getStaffcount);
 router.get("/staffsuspendedcount", authMiddleware, Staff.getStaffSuspendedcount);
+router.get("/staffchart", authMiddleware, Staff.getStaffStats);
 
 
 
