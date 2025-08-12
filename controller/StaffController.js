@@ -137,7 +137,7 @@ exports.getStaffcount = async (req, res) => {
 exports.getStaffSuspendedcount = async (req, res) => {
     try {
         const suspendedCount = await Staff.count({
-            where: { is_suspended: 0 } // or 1 depending on your logic
+            where: { is_suspended: 3 } // or 1 depending on your logic
         });
 
         res.status(200).json({ total: suspendedCount });
@@ -152,7 +152,7 @@ exports.getStaffSuspendedcount = async (req, res) => {
 
 exports.getStaffSuspended=async(req, res)=>{
     try {
-        const getallsus=await Staff.findAll({where:{is_suspended:0}});
+        const getallsus=await Staff.findAll({where:{is_suspended:3}});
         res.status(200).json(getallsus);
     } catch (error) {
         res.status(500).json({message: "Faild to get staff data", error: error.message});
