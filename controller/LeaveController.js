@@ -34,6 +34,21 @@ exports.getLeave=async(req,res)=>{
     }
 }
 
+exports.getLeavecount = async (req, res) => {
+    try {
+        const leaveCount = await LeaveDetails.count({
+            where: { on_leave: 1 } // or 1 depending on your logic
+        });
+
+        res.status(200).json({ total: leaveCount });
+    } catch (error) {
+        res.status(500).json({ 
+            message: "Failed to get Leave count", 
+            error: error.message 
+        });
+    }
+};
+
 
 exports.getLeaveStaffId=async(req,res)=>{
     try {
