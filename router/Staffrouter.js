@@ -22,6 +22,7 @@ router.put('/staff/status/:id',authMiddleware, Staff.updateStaffStatusTwo);
 router.post('/checkMail' , Staff.checkEmail);
 router.post('/staff/gurantor/:staffId',authMiddleware, Staff.createGurantors);
 router.get("/staff/:staffId", authMiddleware, Staff.getGuarantorsByStaffId);
+router.get("/staffcount", authMiddleware, Staff.getStaffcount);
 
 
 
