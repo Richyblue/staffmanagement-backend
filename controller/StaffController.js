@@ -667,6 +667,44 @@ exports.getGuarantorsByStaffId = async (req, res) => {
     }
 };
 
+// Get grouped staff count for charts
+exports.getStaffStats = async (req, res) => {
+    try {
+        // Example: Group by department
+        const departmentStats = await Staff.findAll({
+            attributes: [
+                'language',
+                [Sequelize.fn('COUNT', Sequelize.col('id')), 'count']
+            ],
+            group: ['language']
+        });
+
+        // Example: Group by gender
+        const genderStats = await Staff.findAll({
+            attributes: [
+                'gender',
+                [Sequelize.fn('COUNT', Sequelize.col('id')), 'count']
+            ],
+            group: ['gender']
+        });
+
+        // Total staff
+        const totalCount = await Staff.count();
+
+        res.status(200).json({
+            total: totalCount,
+            byDepartment: departmentStats,
+            byGender: genderStats
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to get staff stats",
+            error: error.message
+        });
+    }
+};
+
+
 
 
 
