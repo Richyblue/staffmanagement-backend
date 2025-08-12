@@ -120,6 +120,35 @@ exports.getStaff=async(req, res)=>{
     }
 };
 
+exports.getStaffcount = async (req, res) => {
+    try {
+        // Get total staff count
+        const totalCount = await Staff.count();
+
+        res.status(200).json({ total: totalCount });
+    } catch (error) {
+        res.status(500).json({ 
+            message: "Failed to get staff count", 
+            error: error.message 
+        });
+    }
+};
+
+exports.getStaffSuspendedcount = async (req, res) => {
+    try {
+        const suspendedCount = await Staff.count({
+            where: { is_suspended: 0 } // or 1 depending on your logic
+        });
+
+        res.status(200).json({ total: suspendedCount });
+    } catch (error) {
+        res.status(500).json({ 
+            message: "Failed to get suspended staff count", 
+            error: error.message 
+        });
+    }
+};
+
 
 exports.getStaffSuspended=async(req, res)=>{
     try {
